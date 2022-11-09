@@ -1,0 +1,22 @@
+{
+  "name": "node.auth.anders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bunn1/Node.Auth.Anders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bunn1/Node.Auth.Anders/issues"
+  },
+  "homepage": "https://github.com/bunn1/Node.Auth.Anders#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
