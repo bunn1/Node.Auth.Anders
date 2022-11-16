@@ -11,8 +11,11 @@ import dotenv from 'dotenv';
 const config = dotenv.config().parsed;
 
 const SITE_NAME = config.SITE_NAME
-const PORT = config.PORT;
+const PORT = Number(config.PORT);
+const SESSION_SECRET = config.SESSION_SECRET
+const SESSION_MAXAGE = Number(config.SESSION_MAXAGE);
+
 
 // export {config};
 // export {config, SITE_NAME};
-export {config, SITE_NAME, PORT};
+export {config, SITE_NAME, PORT, SESSION_SECRET, SESSION_MAXAGE};
