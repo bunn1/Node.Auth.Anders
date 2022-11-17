@@ -21,8 +21,8 @@
         // make sure user accepts cookies before this....
         // https://gdpr.eu/cookies
         document.cookie = "dish=salad; max-age=10";
-        document.cookie = "cookieAlert=true; max-age=10000";
-        document.cookie = "member=icecream; max-age=100";
+        document.cookie = "cookieAlert=true; max-age=360000";
+        document.cookie = "member=true; max-age=100";
 
         // function to read cookie value
         // const getCookie = (name) => {
@@ -37,14 +37,15 @@
             // cookies desert-icecream, preferdish-burger
             // split
             const parts = cookies.split('; ')
-            console.log('parts', parts);
+            // console.log('parts', parts);
 
         // for loop - break loop using return
             for (let i = 0; i < parts.length; i++) {
+                   // console.log("part", parts[i]);
 
                 // split '_'
                 const [key, value] = parts[i].split('=')
-                console.log('key', key, 'value', value)
+                // console.log('key', key, 'value', value)
 
 
                 if (key.trim() == name) {
@@ -55,6 +56,7 @@
         }
 
         // getCookie("dish")
+        
         const findCookieValue = "member";
         const cookieValue = getCookie(findCookieValue);
         console.log(`Cookie ${findCookieValue} value set to ${cookieValue} `);
