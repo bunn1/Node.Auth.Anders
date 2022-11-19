@@ -2,7 +2,7 @@
 //===============================================
 import express from 'express';
 import session from 'express-session'
-import path from 'path'
+// import path from 'path'
 
 //local modules
 //===============================================
@@ -15,6 +15,7 @@ import {
 } from './configs.js'
 
 import routeStart from './routes/route-start.js'
+import routeUser from './routes/route-user.js'
 // variables
 //===============================================
 // const PORT = 3000;
@@ -90,6 +91,10 @@ app.use('/', routeStart)
 app.use('/start', routeStart)
 app.use('/home', routeStart)
 
+
+app.use('/user', routeUser)
+
+
 // Render page using ejs - sker innan statiska filer 
 // app.get('/', (req, res) => {
 
@@ -111,7 +116,7 @@ app.use('/home', routeStart)
 
 // static files | folders | Hantera statiska filer
 // ==============================================
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
 // 404 not found
 // ==============================================

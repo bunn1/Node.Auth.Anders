@@ -14,8 +14,9 @@ const SITE_NAME = config.SITE_NAME
 const PORT = Number(config.PORT);
 const SESSION_SECRET = config.SESSION_SECRET
 const SESSION_MAXAGE = Number(config.SESSION_MAXAGE);
+const MONGODB_URL = config.MONGODB_URL;
 
 
 // export {config};
 // export {config, SITE_NAME};
-export {config, SITE_NAME, PORT, SESSION_SECRET, SESSION_MAXAGE};
+export {config, SITE_NAME, PORT, SESSION_SECRET, SESSION_MAXAGE, MONGODB_URL};
