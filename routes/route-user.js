@@ -5,13 +5,39 @@ const router = express.Router();
 
 import { listUsers } from '../controllers/controller-user.js';
 
-// send json response
+
 router.get("/", (req, res) => {
-    listUsers().then(data => {
-        console.log("data", data);
-        res.json(data);    
-    });
+    res.render("user", {site: SITE_NAME})
 });
+
+
+// user/register route for get
+router.get("/register", (req, res) => {
+    res.render("register", {site: SITE_NAME})
+});
+
+// user/register route for post method
+router.post("/register", (req, res) => {
+
+    console.log("Någon postade ngt....")
+    res.end();
+
+    // om formulär hanteras endast serversida och inte asynkron kod är önskvärd
+    // res.redirect()
+
+    // om formulär hanteras endast serversida och asynkron
+    // kod är önskvärd = sidan laddas inte om
+    // res.json
+
+
+    
+});
+
+
+    // listUsers().then(data => {
+    //     console.log("data", data);
+    //     res.json(data);    
+    // });
 
 export default router;
 
