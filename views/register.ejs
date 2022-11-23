@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrera Användare</title>
+</head>
+<body>
+    
+    <!-- include header - lägg till - innan include -->
+    <%- include ("./partials/header.ejs") %> 
+
+    <h1>Registrera Användare</h1>
+
+    <form action="/user/register" method="post">
+
+        <input type="text" name="username" id="username" placeholder="Användarnamn" required>
+        <input type="password" name="password" id="password" required> 
+        <input type="submit" value="Registrera">
+        <!-- checkbox - confirm -->
+
+
+    </form>
+
+<script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (event) =>{
+        event.preventDefault();
+        console.log("form submit");
+
+        // skicka formulär data med XMLHttpRequest eller fetch som är promised baserat.
+    })
+    
+</script>
+
+</body>
+</html>
