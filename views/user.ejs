@@ -8,15 +8,24 @@
 </head>
 <body>
     
-    <!-- include header - lägg till - innan include -->
-    <%- include ("./partials/header.ejs") %> 
+    <!-- include header -->
+    <%- include("./partials/header.ejs") %>
 
     <h1>Användare</h1>
 
     <p>
         Den här webbplatsen hanterar inloggade användare. 
-        För att kunna logga in måste du först <a href="/user/register">registrera dig.</a>
+        För att kunna logga in måste du först <a href="/user/register">registrera dig</a>.
     </p>
+
+    <p>
+        <a href="/user/login">Logga in</a>
+    </p>
+
+    <p>
+        <a href="/user/logout">Logga ut</a>
+    </p>
+
 
 </body>
 </html>
