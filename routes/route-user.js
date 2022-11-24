@@ -1,45 +1,169 @@
-import express from 'express';
-import { SITE_NAME } from '../configs.js';
+import express from "express";
+import { SITE_NAME } from "../configs.js";
 const router = express.Router();
 
-
-import { listUsers } from '../controllers/controller-user.js';
-
+import { listUsers, addUser } from "../controllers/controller-user.js";
 
 router.get("/", (req, res) => {
-    res.render("user", {site: SITE_NAME})
+    res.render("user", { site: SITE_NAME });
 });
 
-
-// user/register route for get
 router.get("/register", (req, res) => {
-    res.render("register", {site: SITE_NAME})
+    res.render("register", { site: SITE_NAME });
 });
 
-// user/register route for post method
 router.post("/register", (req, res) => {
 
-    console.log("Någon postade ngt....")
-    res.end();
+    // formulärdata finns i req 
+    // - se till att express hanterar formulär data som json
+    console.log("req.body", req.body);
 
-    // om formulär hanteras endast serversida och inte asynkron kod är önskvärd
-    // res.redirect()
+    // prepare obj reply
+    let reply = { result: "", message: "" };
 
-    // om formulär hanteras endast serversida och asynkron
-    // kod är önskvärd = sidan laddas inte om
-    // res.json
+    addUser(req.body)
+        .then((data) => {
+            console.log("data", data);
+            if (data.error !== undefined) {
+                reply.result = "fail";
+                reply.message = data.error;
+            } else {
+                reply.result = "success";
+                reply.message = "användare sparades till databasen";
+            }
+        })
+        .catch((error) => {
+            console.log("error");
+        })
+        .finally((data) => {
+            res.json(reply);
+        });
+});
+
+// listUsers().then(data => {
+//     console.log("data", data);
+//     res.json(data);
+// });
+
+export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import express from 'express';
+// import { SITE_NAME } from '../configs.js';
+// const router = express.Router();
+
+
+// import { listUsers, addUser } from '../controllers/controller-user.js';
+
+
+// router.get("/", (req, res) => {
+//     res.render("user", {site: SITE_NAME})
+// });
+
+
+// // user/register route for get
+// router.get("/register", (req, res) => {
+//     res.render("register", {site: SITE_NAME})
+// });
+
+// // user/register route for post method
+// router.post("/register", (req, res) => {
+
+//     console.log("Någon postade ngt....")
+
+//     // formulär data finns i req - se till att express hanterar formulär data som json
+//     console.log("req.body", req.body)
+
+//     // let result = addUser(req.body);
+//     // console.log("result", result)
+
+
+//     // prepare obj reply
+//     let reply = {result: "", message: ""};
+
+
+// // Vad får vi för resultat av det
+//     addUser(req.body).then((data) => {
+
+//         console.log("data", data);
+//         if (data.error !== undefined){
+//             reply.result = "fail";
+//             reply.message = data.error
+//         } else {
+//             reply.result = "success";
+//             reply.message = "användare sparades till databasen"
+//         }
+
+
+//     }).catch((err) => {
+//         console.log("error")
+
+//     }).finally((data) =>{
+//         res.json(reply);
+//     })
+
+//     // res.end();
+
+//     // om formulär hanteras endast serversida och inte asynkron kod är önskvärd
+//     // res.redirect()
+
+//     // om formulär hanteras endast serversida och asynkron
+//     // kod är önskvärd = sidan laddas inte om
+//     // res.json
 
 
     
-});
+// });
 
 
-    // listUsers().then(data => {
-    //     console.log("data", data);
-    //     res.json(data);    
-    // });
+//     // listUsers().then(data => {
+//     //     console.log("data", data);
+//     //     res.json(data);    
+//     // });
 
-export default router;
+// export default router;
 
 
 
